@@ -1,0 +1,49 @@
+2019-01-10 17:26:40 +0900 [info]: parsing config file is succeeded path="test.conf"
+2019-01-10 17:26:40 +0900 [warn]: 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 17:26:40 +0900 [warn]: this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 17:26:40 +0900 [info]: using configuration file: <ROOT>
+  <source>
+    @type tail
+    format apache
+    path "/tmp/dummy_access_log"
+    tag "dummy.apache.log"
+    <parse>
+      @type apache
+    </parse>
+  </source>
+  <match dummy.apache.log>
+    @type postgres
+    host "localhost"
+    port 5432
+    database "access_logs"
+    username "miyaokakiyoshinari"
+    password "mypass"
+    key_names "status,bytes,vhost,path,rhost,agent,referer"
+    sql "INSERT INTO accesslog (status,bytes,vhost,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+    flush_intervals 5s
+  </match>
+</ROOT>
+2019-01-10 17:26:40 +0900 [info]: starting fluentd-1.3.3 pid=64095 ruby="2.5.1"
+2019-01-10 17:26:40 +0900 [info]: spawn command to main:  cmdline=["/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/ruby", "-Eascii-8bit:ascii-8bit", "/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/fluentd", "-c", "test.conf", "-l", "debug.log", "--under-supervisor"]
+2019-01-10 17:26:42 +0900 [info]: gem 'fluent-plugin-postgres' version '0.1.0'
+2019-01-10 17:26:42 +0900 [info]: gem 'fluentd' version '1.3.3'
+2019-01-10 17:26:42 +0900 [info]: adding match pattern="dummy.apache.log" type="postgres"
+2019-01-10 17:26:43 +0900 [info]: adding source type="tail"
+2019-01-10 17:26:43 +0900 [warn]: #0 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 17:26:43 +0900 [warn]: #0 this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 17:26:43 +0900 [warn]: parameter 'flush_intervals' in <match dummy.apache.log>
+  @type postgres
+  host "localhost"
+  port 5432
+  database "access_logs"
+  username "miyaokakiyoshinari"
+  password "mypass"
+  key_names "status,bytes,vhost,path,rhost,agent,referer"
+  sql "INSERT INTO accesslog (status,bytes,vhost,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+  flush_intervals 5s
+</match> is not used.
+2019-01-10 17:26:43 +0900 [info]: #0 starting fluentd worker pid=64117 ppid=64095 worker=0
+2019-01-10 17:26:43 +0900 [info]: #0 following tail of /tmp/dummy_access_log
+2019-01-10 17:26:43 +0900 [info]: #0 fluentd worker is now running worker=0
+2019-01-10 17:28:14 +0900 [warn]: #0 failed to flush the buffer. retry_time=11 next_retry_seconds=2019-01-10 17:43:28 +0900 chunk="57f16174cd8cdee1a4007a16aa7d5eb0" error_class=PG::ConnectionBad error="could not translate host name \"master.db.service.local\" to address: nodename nor servname provided, or not known\n"
+  2019-01-10 17:28:14 +0900 [warn]: #0 suppressed same stacktrace
