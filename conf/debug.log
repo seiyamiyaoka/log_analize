@@ -1,7 +1,7 @@
-2019-01-10 17:26:40 +0900 [info]: parsing config file is succeeded path="test.conf"
-2019-01-10 17:26:40 +0900 [warn]: 'pos_file PATH' parameter is not set to a 'tail' source.
-2019-01-10 17:26:40 +0900 [warn]: this parameter is highly recommended to save the position to resume tailing.
-2019-01-10 17:26:40 +0900 [info]: using configuration file: <ROOT>
+2019-01-10 18:01:38 +0900 [info]: parsing config file is succeeded path="test.conf"
+2019-01-10 18:01:38 +0900 [warn]: 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:01:38 +0900 [warn]: this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:01:38 +0900 [info]: using configuration file: <ROOT>
   <source>
     @type tail
     format apache
@@ -18,32 +18,876 @@
     database "access_logs"
     username "miyaokakiyoshinari"
     password "mypass"
-    key_names "status,bytes,vhost,path,rhost,agent,referer"
-    sql "INSERT INTO accesslog (status,bytes,vhost,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+    key_names "status,bytes,host,path,rhost,agent,referer"
+    sql "INSERT INTO accesslog (status,bytes,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
     flush_intervals 5s
   </match>
 </ROOT>
-2019-01-10 17:26:40 +0900 [info]: starting fluentd-1.3.3 pid=64095 ruby="2.5.1"
-2019-01-10 17:26:40 +0900 [info]: spawn command to main:  cmdline=["/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/ruby", "-Eascii-8bit:ascii-8bit", "/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/fluentd", "-c", "test.conf", "-l", "debug.log", "--under-supervisor"]
-2019-01-10 17:26:42 +0900 [info]: gem 'fluent-plugin-postgres' version '0.1.0'
-2019-01-10 17:26:42 +0900 [info]: gem 'fluentd' version '1.3.3'
-2019-01-10 17:26:42 +0900 [info]: adding match pattern="dummy.apache.log" type="postgres"
-2019-01-10 17:26:43 +0900 [info]: adding source type="tail"
-2019-01-10 17:26:43 +0900 [warn]: #0 'pos_file PATH' parameter is not set to a 'tail' source.
-2019-01-10 17:26:43 +0900 [warn]: #0 this parameter is highly recommended to save the position to resume tailing.
-2019-01-10 17:26:43 +0900 [warn]: parameter 'flush_intervals' in <match dummy.apache.log>
+2019-01-10 18:01:38 +0900 [info]: starting fluentd-1.3.3 pid=71304 ruby="2.5.1"
+2019-01-10 18:01:38 +0900 [info]: spawn command to main:  cmdline=["/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/ruby", "-Eascii-8bit:ascii-8bit", "/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/fluentd", "-c", "test.conf", "-l", "debug.log", "--under-supervisor"]
+2019-01-10 18:01:40 +0900 [info]: gem 'fluent-plugin-postgres' version '0.1.0'
+2019-01-10 18:01:40 +0900 [info]: gem 'fluentd' version '1.3.3'
+2019-01-10 18:01:40 +0900 [info]: adding match pattern="dummy.apache.log" type="postgres"
+2019-01-10 18:01:40 +0900 [info]: adding source type="tail"
+2019-01-10 18:01:40 +0900 [warn]: #0 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:01:40 +0900 [warn]: #0 this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:01:40 +0900 [warn]: parameter 'flush_intervals' in <match dummy.apache.log>
   @type postgres
   host "localhost"
   port 5432
   database "access_logs"
   username "miyaokakiyoshinari"
   password "mypass"
-  key_names "status,bytes,vhost,path,rhost,agent,referer"
-  sql "INSERT INTO accesslog (status,bytes,vhost,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+  key_names "status,bytes,host,path,rhost,agent,referer"
+  sql "INSERT INTO accesslog (status,bytes,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
   flush_intervals 5s
 </match> is not used.
-2019-01-10 17:26:43 +0900 [info]: #0 starting fluentd worker pid=64117 ppid=64095 worker=0
-2019-01-10 17:26:43 +0900 [info]: #0 following tail of /tmp/dummy_access_log
-2019-01-10 17:26:43 +0900 [info]: #0 fluentd worker is now running worker=0
-2019-01-10 17:28:14 +0900 [warn]: #0 failed to flush the buffer. retry_time=11 next_retry_seconds=2019-01-10 17:43:28 +0900 chunk="57f16174cd8cdee1a4007a16aa7d5eb0" error_class=PG::ConnectionBad error="could not translate host name \"master.db.service.local\" to address: nodename nor servname provided, or not known\n"
-  2019-01-10 17:28:14 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:01:40 +0900 [info]: #0 starting fluentd worker pid=71335 ppid=71304 worker=0
+2019-01-10 18:01:40 +0900 [info]: #0 following tail of /tmp/dummy_access_log
+2019-01-10 18:01:40 +0900 [info]: #0 fluentd worker is now running worker=0
+2019-01-10 18:01:52 +0900 [warn]: #0 failed to flush the buffer. retry_time=9 next_retry_seconds=2019-01-10 18:06:32 +0900 chunk="57f16c09ab87286b7d87f707f6278dca" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:01:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:01:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:01:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:01:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:01:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:01:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:01:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:01:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:02:49 +0900 [warn]: #0 failed to flush the buffer. retry_time=10 next_retry_seconds=2019-01-10 18:10:20 +0900 chunk="57f16b5e0601695fbf2b61ab7e940c14" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:02:49 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:02:49 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:02:49 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:02:49 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:02:49 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:02:49 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:02:49 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:02:49 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:02:52 +0900 [warn]: #0 failed to flush the buffer. retry_time=10 next_retry_seconds=2019-01-10 18:10:53 +0900 chunk="57f16b5dec17b3c48d7da8ba48e38e99" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:02:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:02:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:02:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:02:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:02:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:02:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:02:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:02:52 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:03:25 +0900 [warn]: #0 failed to flush the buffer. retry_time=0 next_retry_seconds=2019-01-10 18:03:26 +0900 chunk="57f16d64c4258f1397a1eb06764e3768" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:03:25 +0900 [warn]: #0 failed to flush the buffer. retry_time=0 next_retry_seconds=2019-01-10 18:03:26 +0900 chunk="57f16d64b76fbcb5c98c56e558ccada3" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:03:25 +0900 [warn]: #0 failed to flush the buffer. retry_time=0 next_retry_seconds=2019-01-10 18:03:26 +0900 chunk="57f16d656f6bb737594b63248ae0ebbe" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:03:25 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:03:26 +0900 [warn]: #0 failed to flush the buffer. retry_time=0 next_retry_seconds=2019-01-10 18:03:27 +0900 chunk="57f16d64a241ef2ef3e553d85683f1fd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:26 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:03:26 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:03:26 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:03:26 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:03:26 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:03:26 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:03:26 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:03:26 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:03:26 +0900 [warn]: #0 failed to flush the buffer. retry_time=1 next_retry_seconds=2019-01-10 18:03:27 +0900 chunk="57f16d64c4258f1397a1eb06764e3768" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:26 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:26 +0900 [warn]: #0 failed to flush the buffer. retry_time=1 next_retry_seconds=2019-01-10 18:03:27 +0900 chunk="57f16d64b76fbcb5c98c56e558ccada3" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:26 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:26 +0900 [warn]: #0 failed to flush the buffer. retry_time=1 next_retry_seconds=2019-01-10 18:03:27 +0900 chunk="57f16d656f6bb737594b63248ae0ebbe" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:26 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:27 +0900 [warn]: #0 failed to flush the buffer. retry_time=0 next_retry_seconds=2019-01-10 18:03:28 +0900 chunk="57f16d658a1c2ca8d9d8f0fe366b87b9" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:03:27 +0900 [warn]: #0 failed to flush the buffer. retry_time=1 next_retry_seconds=2019-01-10 18:03:28 +0900 chunk="57f16d64a241ef2ef3e553d85683f1fd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:27 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:27 +0900 [warn]: #0 failed to flush the buffer. retry_time=0 next_retry_seconds=2019-01-10 18:03:28 +0900 chunk="57f16d64a5d2db3d8bc2f908d5c448cd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:03:27 +0900 [warn]: #0 failed to flush the buffer. retry_time=2 next_retry_seconds=2019-01-10 18:03:29 +0900 chunk="57f16d64c4258f1397a1eb06764e3768" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:27 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:27 +0900 [warn]: #0 failed to flush the buffer. retry_time=2 next_retry_seconds=2019-01-10 18:03:29 +0900 chunk="57f16d64b76fbcb5c98c56e558ccada3" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:27 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:27 +0900 [warn]: #0 failed to flush the buffer. retry_time=0 next_retry_seconds=2019-01-10 18:03:28 +0900 chunk="57f16d64df0f2b1b5a7a10d734ca4301" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:03:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:03:27 +0900 [warn]: #0 failed to flush the buffer. retry_time=2 next_retry_seconds=2019-01-10 18:03:29 +0900 chunk="57f16d656f6bb737594b63248ae0ebbe" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:27 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:28 +0900 [warn]: #0 failed to flush the buffer. retry_time=1 next_retry_seconds=2019-01-10 18:03:28 +0900 chunk="57f16d658a1c2ca8d9d8f0fe366b87b9" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:28 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:28 +0900 [warn]: #0 failed to flush the buffer. retry_time=2 next_retry_seconds=2019-01-10 18:03:30 +0900 chunk="57f16d64a241ef2ef3e553d85683f1fd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:28 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:28 +0900 [warn]: #0 failed to flush the buffer. retry_time=1 next_retry_seconds=2019-01-10 18:03:29 +0900 chunk="57f16d64a5d2db3d8bc2f908d5c448cd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:28 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:28 +0900 [warn]: #0 failed to flush the buffer. retry_time=1 next_retry_seconds=2019-01-10 18:03:29 +0900 chunk="57f16d64df0f2b1b5a7a10d734ca4301" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:28 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:29 +0900 [warn]: #0 failed to flush the buffer. retry_time=2 next_retry_seconds=2019-01-10 18:03:31 +0900 chunk="57f16d658a1c2ca8d9d8f0fe366b87b9" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:29 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:29 +0900 [warn]: #0 failed to flush the buffer. retry_time=2 next_retry_seconds=2019-01-10 18:03:31 +0900 chunk="57f16d64a5d2db3d8bc2f908d5c448cd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:29 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:29 +0900 [warn]: #0 failed to flush the buffer. retry_time=3 next_retry_seconds=2019-01-10 18:03:33 +0900 chunk="57f16d64c4258f1397a1eb06764e3768" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:29 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:29 +0900 [warn]: #0 failed to flush the buffer. retry_time=3 next_retry_seconds=2019-01-10 18:03:33 +0900 chunk="57f16d64b76fbcb5c98c56e558ccada3" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:29 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:29 +0900 [warn]: #0 failed to flush the buffer. retry_time=3 next_retry_seconds=2019-01-10 18:03:33 +0900 chunk="57f16d656f6bb737594b63248ae0ebbe" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:29 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:29 +0900 [warn]: #0 failed to flush the buffer. retry_time=2 next_retry_seconds=2019-01-10 18:03:31 +0900 chunk="57f16d64df0f2b1b5a7a10d734ca4301" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:29 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:30 +0900 [warn]: #0 failed to flush the buffer. retry_time=3 next_retry_seconds=2019-01-10 18:03:33 +0900 chunk="57f16d64a241ef2ef3e553d85683f1fd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:30 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:31 +0900 [warn]: #0 failed to flush the buffer. retry_time=3 next_retry_seconds=2019-01-10 18:03:35 +0900 chunk="57f16d64a5d2db3d8bc2f908d5c448cd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:31 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:31 +0900 [warn]: #0 failed to flush the buffer. retry_time=3 next_retry_seconds=2019-01-10 18:03:35 +0900 chunk="57f16d658a1c2ca8d9d8f0fe366b87b9" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:31 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:31 +0900 [warn]: #0 failed to flush the buffer. retry_time=3 next_retry_seconds=2019-01-10 18:03:35 +0900 chunk="57f16d64df0f2b1b5a7a10d734ca4301" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:31 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:33 +0900 [warn]: #0 failed to flush the buffer. retry_time=4 next_retry_seconds=2019-01-10 18:03:42 +0900 chunk="57f16d64c4258f1397a1eb06764e3768" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:33 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:33 +0900 [warn]: #0 failed to flush the buffer. retry_time=4 next_retry_seconds=2019-01-10 18:03:40 +0900 chunk="57f16d656f6bb737594b63248ae0ebbe" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:33 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:33 +0900 [warn]: #0 failed to flush the buffer. retry_time=4 next_retry_seconds=2019-01-10 18:03:41 +0900 chunk="57f16d64b76fbcb5c98c56e558ccada3" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:33 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:33 +0900 [warn]: #0 failed to flush the buffer. retry_time=4 next_retry_seconds=2019-01-10 18:03:41 +0900 chunk="57f16d64a241ef2ef3e553d85683f1fd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:33 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:35 +0900 [warn]: #0 failed to flush the buffer. retry_time=4 next_retry_seconds=2019-01-10 18:03:43 +0900 chunk="57f16d64a5d2db3d8bc2f908d5c448cd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:35 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:35 +0900 [warn]: #0 failed to flush the buffer. retry_time=4 next_retry_seconds=2019-01-10 18:03:42 +0900 chunk="57f16d658a1c2ca8d9d8f0fe366b87b9" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:35 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:35 +0900 [warn]: #0 failed to flush the buffer. retry_time=4 next_retry_seconds=2019-01-10 18:03:43 +0900 chunk="57f16d64df0f2b1b5a7a10d734ca4301" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:35 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:40 +0900 [warn]: #0 failed to flush the buffer. retry_time=5 next_retry_seconds=2019-01-10 18:03:57 +0900 chunk="57f16d656f6bb737594b63248ae0ebbe" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:40 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:41 +0900 [warn]: #0 failed to flush the buffer. retry_time=5 next_retry_seconds=2019-01-10 18:03:57 +0900 chunk="57f16d64b76fbcb5c98c56e558ccada3" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:41 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:41 +0900 [warn]: #0 failed to flush the buffer. retry_time=5 next_retry_seconds=2019-01-10 18:03:58 +0900 chunk="57f16d64a241ef2ef3e553d85683f1fd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:41 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:42 +0900 [warn]: #0 failed to flush the buffer. retry_time=5 next_retry_seconds=2019-01-10 18:03:57 +0900 chunk="57f16d64c4258f1397a1eb06764e3768" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:42 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:42 +0900 [warn]: #0 failed to flush the buffer. retry_time=5 next_retry_seconds=2019-01-10 18:03:59 +0900 chunk="57f16d658a1c2ca8d9d8f0fe366b87b9" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:42 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:43 +0900 [warn]: #0 failed to flush the buffer. retry_time=5 next_retry_seconds=2019-01-10 18:03:58 +0900 chunk="57f16d64a5d2db3d8bc2f908d5c448cd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:43 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:43 +0900 [warn]: #0 failed to flush the buffer. retry_time=5 next_retry_seconds=2019-01-10 18:03:58 +0900 chunk="57f16d64df0f2b1b5a7a10d734ca4301" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:43 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:49 +0900 [info]: parsing config file is succeeded path="test.conf"
+2019-01-10 18:03:49 +0900 [warn]: 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:03:49 +0900 [warn]: this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:03:49 +0900 [info]: using configuration file: <ROOT>
+  <source>
+    @type tail
+    format apache
+    path "/tmp/dummy_access_log"
+    tag "dummy.apache.log"
+    <parse>
+      @type apache
+    </parse>
+  </source>
+  <match dummy.apache.log>
+    @type postgres
+    host "localhost"
+    port 5432
+    database "access_logs"
+    username "miyaokakiyoshinari"
+    password "mypass"
+    key_names "method,code,host,path,rhost,agent,referer"
+    sql "INSERT INTO accesslog (method,code,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+    flush_intervals 5s
+  </match>
+</ROOT>
+2019-01-10 18:03:49 +0900 [info]: starting fluentd-1.3.3 pid=71788 ruby="2.5.1"
+2019-01-10 18:03:49 +0900 [info]: spawn command to main:  cmdline=["/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/ruby", "-Eascii-8bit:ascii-8bit", "/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/fluentd", "-c", "test.conf", "-l", "debug.log", "--under-supervisor"]
+2019-01-10 18:03:51 +0900 [info]: gem 'fluent-plugin-postgres' version '0.1.0'
+2019-01-10 18:03:51 +0900 [info]: gem 'fluentd' version '1.3.3'
+2019-01-10 18:03:51 +0900 [info]: adding match pattern="dummy.apache.log" type="postgres"
+2019-01-10 18:03:52 +0900 [info]: adding source type="tail"
+2019-01-10 18:03:52 +0900 [warn]: #0 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:03:52 +0900 [warn]: #0 this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:03:52 +0900 [warn]: parameter 'flush_intervals' in <match dummy.apache.log>
+  @type postgres
+  host "localhost"
+  port 5432
+  database "access_logs"
+  username "miyaokakiyoshinari"
+  password "mypass"
+  key_names "method,code,host,path,rhost,agent,referer"
+  sql "INSERT INTO accesslog (method,code,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+  flush_intervals 5s
+</match> is not used.
+2019-01-10 18:03:52 +0900 [info]: #0 starting fluentd worker pid=71818 ppid=71788 worker=0
+2019-01-10 18:03:52 +0900 [info]: #0 following tail of /tmp/dummy_access_log
+2019-01-10 18:03:52 +0900 [info]: #0 fluentd worker is now running worker=0
+2019-01-10 18:03:57 +0900 [warn]: #0 failed to flush the buffer. retry_time=6 next_retry_seconds=2019-01-10 18:04:29 +0900 chunk="57f16d64c4258f1397a1eb06764e3768" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:57 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:57 +0900 [warn]: #0 failed to flush the buffer. retry_time=6 next_retry_seconds=2019-01-10 18:04:26 +0900 chunk="57f16d64b76fbcb5c98c56e558ccada3" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:57 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:57 +0900 [warn]: #0 failed to flush the buffer. retry_time=6 next_retry_seconds=2019-01-10 18:04:33 +0900 chunk="57f16d656f6bb737594b63248ae0ebbe" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:57 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:58 +0900 [warn]: #0 failed to flush the buffer. retry_time=6 next_retry_seconds=2019-01-10 18:04:30 +0900 chunk="57f16d64a5d2db3d8bc2f908d5c448cd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:58 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:58 +0900 [warn]: #0 failed to flush the buffer. retry_time=6 next_retry_seconds=2019-01-10 18:04:32 +0900 chunk="57f16d64a241ef2ef3e553d85683f1fd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:58 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:58 +0900 [warn]: #0 failed to flush the buffer. retry_time=6 next_retry_seconds=2019-01-10 18:04:31 +0900 chunk="57f16d64df0f2b1b5a7a10d734ca4301" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:58 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:03:59 +0900 [warn]: #0 failed to flush the buffer. retry_time=6 next_retry_seconds=2019-01-10 18:04:34 +0900 chunk="57f16d658a1c2ca8d9d8f0fe366b87b9" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:03:59 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:04:03 +0900 [info]: parsing config file is succeeded path="test.conf"
+2019-01-10 18:04:04 +0900 [warn]: 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:04:04 +0900 [warn]: this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:04:04 +0900 [info]: using configuration file: <ROOT>
+  <source>
+    @type tail
+    format apache
+    path "/tmp/dummy_access_log"
+    tag "dummy.apache.log"
+    <parse>
+      @type apache
+    </parse>
+  </source>
+  <match dummy.apache.log>
+    @type postgres
+    host "localhost"
+    port 5432
+    database "access_logs"
+    username "miyaokakiyoshinari"
+    password "mypass"
+    key_names "method,code,host,path,rhost,agent,referer"
+    sql "INSERT INTO accesslog (method,code,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+    flush_intervals 5s
+  </match>
+</ROOT>
+2019-01-10 18:04:04 +0900 [info]: starting fluentd-1.3.3 pid=71884 ruby="2.5.1"
+2019-01-10 18:04:04 +0900 [info]: spawn command to main:  cmdline=["/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/ruby", "-Eascii-8bit:ascii-8bit", "/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/fluentd", "-c", "test.conf", "-l", "debug.log", "--under-supervisor"]
+2019-01-10 18:04:06 +0900 [info]: gem 'fluent-plugin-postgres' version '0.1.0'
+2019-01-10 18:04:06 +0900 [info]: gem 'fluentd' version '1.3.3'
+2019-01-10 18:04:06 +0900 [info]: adding match pattern="dummy.apache.log" type="postgres"
+2019-01-10 18:04:06 +0900 [info]: adding source type="tail"
+2019-01-10 18:04:06 +0900 [warn]: #0 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:04:06 +0900 [warn]: #0 this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:04:06 +0900 [warn]: parameter 'flush_intervals' in <match dummy.apache.log>
+  @type postgres
+  host "localhost"
+  port 5432
+  database "access_logs"
+  username "miyaokakiyoshinari"
+  password "mypass"
+  key_names "method,code,host,path,rhost,agent,referer"
+  sql "INSERT INTO accesslog (method,code,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+  flush_intervals 5s
+</match> is not used.
+2019-01-10 18:04:06 +0900 [info]: #0 starting fluentd worker pid=71911 ppid=71884 worker=0
+2019-01-10 18:04:06 +0900 [info]: #0 following tail of /tmp/dummy_access_log
+2019-01-10 18:04:06 +0900 [info]: #0 fluentd worker is now running worker=0
+2019-01-10 18:04:16 +0900 [warn]: #0 failed to flush the buffer. retry_time=10 next_retry_seconds=2019-01-10 18:13:22 +0900 chunk="57f16bbe75b852e0d3c1a44a839e971b" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:04:16 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:04:16 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:04:16 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:04:16 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:04:16 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:04:16 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:04:16 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:04:16 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:04:23 +0900 [warn]: #0 failed to flush the buffer. retry_time=10 next_retry_seconds=2019-01-10 18:12:52 +0900 chunk="57f16bbf0e3a8fe9e27575314501be57" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:04:23 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:04:23 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:04:23 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:04:23 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:04:23 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:04:23 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:04:23 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:04:23 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:04:26 +0900 [warn]: #0 failed to flush the buffer. retry_time=7 next_retry_seconds=2019-01-10 18:05:26 +0900 chunk="57f16d64b76fbcb5c98c56e558ccada3" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:04:26 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:04:27 +0900 [warn]: #0 failed to flush the buffer. retry_time=10 next_retry_seconds=2019-01-10 18:12:42 +0900 chunk="57f16bbefa19c614d5cf39bde74881da" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:04:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:04:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:04:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:04:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:04:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:04:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:04:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:04:27 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:04:29 +0900 [warn]: #0 failed to flush the buffer. retry_time=7 next_retry_seconds=2019-01-10 18:05:38 +0900 chunk="57f16d64c4258f1397a1eb06764e3768" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:04:29 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:04:30 +0900 [warn]: #0 failed to flush the buffer. retry_time=7 next_retry_seconds=2019-01-10 18:05:30 +0900 chunk="57f16d64a5d2db3d8bc2f908d5c448cd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:04:30 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:04:31 +0900 [warn]: #0 failed to flush the buffer. retry_time=7 next_retry_seconds=2019-01-10 18:05:29 +0900 chunk="57f16d64df0f2b1b5a7a10d734ca4301" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:04:31 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:04:32 +0900 [warn]: #0 failed to flush the buffer. retry_time=7 next_retry_seconds=2019-01-10 18:05:42 +0900 chunk="57f16d64a241ef2ef3e553d85683f1fd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:04:32 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:04:33 +0900 [warn]: #0 failed to flush the buffer. retry_time=7 next_retry_seconds=2019-01-10 18:05:44 +0900 chunk="57f16d656f6bb737594b63248ae0ebbe" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:04:33 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:04:34 +0900 [warn]: #0 failed to flush the buffer. retry_time=7 next_retry_seconds=2019-01-10 18:05:33 +0900 chunk="57f16d658a1c2ca8d9d8f0fe366b87b9" error_class=PG::UndefinedColumn error="ERROR:  column \"status\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (status,bytes,host,path,rhost,agent,re...\n                               ^\n"
+  2019-01-10 18:04:34 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:75:in `async_prepare'
+  2019-01-10 18:04:34 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:75:in `write'
+  2019-01-10 18:04:34 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:04:34 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:04:34 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:04:34 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:05:14 +0900 [warn]: #0 failed to flush the buffer. retry_time=11 next_retry_seconds=2019-01-10 18:20:19 +0900 chunk="57f16a4f5dbb2f2fdda0a1fe709cd015" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:14 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:05:14 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:05:14 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:05:14 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:05:14 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:05:14 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:05:14 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:05:14 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:05:17 +0900 [warn]: #0 failed to flush the buffer. retry_time=0 next_retry_seconds=2019-01-10 18:05:18 +0900 chunk="57f16dcd5be963c95e8017b081a21afd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:17 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:05:17 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:05:17 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:05:17 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:05:17 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:05:17 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:05:17 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:05:17 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:05:18 +0900 [warn]: #0 failed to flush the buffer. retry_time=1 next_retry_seconds=2019-01-10 18:05:19 +0900 chunk="57f16dcd5be963c95e8017b081a21afd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:18 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:19 +0900 [warn]: #0 failed to flush the buffer. retry_time=2 next_retry_seconds=2019-01-10 18:05:21 +0900 chunk="57f16dcd5be963c95e8017b081a21afd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:19 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:20 +0900 [warn]: #0 failed to flush the buffer. retry_time=0 next_retry_seconds=2019-01-10 18:05:21 +0900 chunk="57f16dcdefade6dfde13d33390741d6d" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:20 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:05:20 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:05:20 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:05:20 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:05:20 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:05:20 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:05:20 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:05:20 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:05:21 +0900 [warn]: #0 failed to flush the buffer. retry_time=1 next_retry_seconds=2019-01-10 18:05:22 +0900 chunk="57f16dcdefade6dfde13d33390741d6d" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:21 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:21 +0900 [warn]: #0 failed to flush the buffer. retry_time=3 next_retry_seconds=2019-01-10 18:05:25 +0900 chunk="57f16dcd5be963c95e8017b081a21afd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:21 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:22 +0900 [warn]: #0 failed to flush the buffer. retry_time=2 next_retry_seconds=2019-01-10 18:05:24 +0900 chunk="57f16dcdefade6dfde13d33390741d6d" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:22 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:24 +0900 [warn]: #0 failed to flush the buffer. retry_time=3 next_retry_seconds=2019-01-10 18:05:28 +0900 chunk="57f16dcdefade6dfde13d33390741d6d" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:24 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:25 +0900 [warn]: #0 failed to flush the buffer. retry_time=4 next_retry_seconds=2019-01-10 18:05:33 +0900 chunk="57f16dcd5be963c95e8017b081a21afd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:25 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:26 +0900 [warn]: #0 failed to flush the buffer. retry_time=8 next_retry_seconds=2019-01-10 18:07:34 +0900 chunk="57f16d64b76fbcb5c98c56e558ccada3" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:26 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:28 +0900 [warn]: #0 failed to flush the buffer. retry_time=4 next_retry_seconds=2019-01-10 18:05:36 +0900 chunk="57f16dcdefade6dfde13d33390741d6d" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:28 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:29 +0900 [warn]: #0 failed to flush the buffer. retry_time=8 next_retry_seconds=2019-01-10 18:07:28 +0900 chunk="57f16d64df0f2b1b5a7a10d734ca4301" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:29 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:30 +0900 [warn]: #0 failed to flush the buffer. retry_time=8 next_retry_seconds=2019-01-10 18:07:50 +0900 chunk="57f16d64a5d2db3d8bc2f908d5c448cd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:30 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:33 +0900 [warn]: #0 failed to flush the buffer. retry_time=8 next_retry_seconds=2019-01-10 18:07:49 +0900 chunk="57f16d658a1c2ca8d9d8f0fe366b87b9" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:33 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:05:33 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:05:33 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:05:33 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:05:33 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:05:33 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:05:33 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:05:33 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:05:33 +0900 [warn]: #0 failed to flush the buffer. retry_time=5 next_retry_seconds=2019-01-10 18:05:48 +0900 chunk="57f16dcd5be963c95e8017b081a21afd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:33 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:36 +0900 [warn]: #0 failed to flush the buffer. retry_time=5 next_retry_seconds=2019-01-10 18:05:51 +0900 chunk="57f16dcdefade6dfde13d33390741d6d" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:36 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:38 +0900 [warn]: #0 failed to flush the buffer. retry_time=8 next_retry_seconds=2019-01-10 18:07:40 +0900 chunk="57f16d64c4258f1397a1eb06764e3768" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:38 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:42 +0900 [warn]: #0 failed to flush the buffer. retry_time=8 next_retry_seconds=2019-01-10 18:07:55 +0900 chunk="57f16d64a241ef2ef3e553d85683f1fd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:42 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:44 +0900 [warn]: #0 failed to flush the buffer. retry_time=8 next_retry_seconds=2019-01-10 18:08:00 +0900 chunk="57f16d656f6bb737594b63248ae0ebbe" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:44 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:48 +0900 [warn]: #0 failed to flush the buffer. retry_time=6 next_retry_seconds=2019-01-10 18:06:23 +0900 chunk="57f16dcd5be963c95e8017b081a21afd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:48 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:05:51 +0900 [warn]: #0 failed to flush the buffer. retry_time=6 next_retry_seconds=2019-01-10 18:06:26 +0900 chunk="57f16dcdefade6dfde13d33390741d6d" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:05:51 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:06:23 +0900 [warn]: #0 failed to flush the buffer. retry_time=7 next_retry_seconds=2019-01-10 18:07:33 +0900 chunk="57f16dcd5be963c95e8017b081a21afd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:06:23 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:06:26 +0900 [warn]: #0 failed to flush the buffer. retry_time=7 next_retry_seconds=2019-01-10 18:07:29 +0900 chunk="57f16dcdefade6dfde13d33390741d6d" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:06:26 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:06:32 +0900 [warn]: #0 failed to flush the buffer. retry_time=10 next_retry_seconds=2019-01-10 18:15:10 +0900 chunk="57f16c09ab87286b7d87f707f6278dca" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:06:32 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:07:22 +0900 [warn]: #0 failed to flush the buffer. retry_time=11 next_retry_seconds=2019-01-10 18:26:13 +0900 chunk="57f16a4f8326bc8f8c61dc1af7992d75" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:07:22 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:07:22 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:07:22 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:07:22 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:07:22 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:07:22 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:07:22 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:07:22 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:07:28 +0900 [warn]: #0 failed to flush the buffer. retry_time=9 next_retry_seconds=2019-01-10 18:11:54 +0900 chunk="57f16d64df0f2b1b5a7a10d734ca4301" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:07:28 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:07:29 +0900 [warn]: #0 failed to flush the buffer. retry_time=8 next_retry_seconds=2019-01-10 18:09:46 +0900 chunk="57f16dcdefade6dfde13d33390741d6d" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:07:29 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:07:33 +0900 [warn]: #0 failed to flush the buffer. retry_time=8 next_retry_seconds=2019-01-10 18:09:46 +0900 chunk="57f16dcd5be963c95e8017b081a21afd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:07:33 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:07:34 +0900 [warn]: #0 failed to flush the buffer. retry_time=9 next_retry_seconds=2019-01-10 18:11:39 +0900 chunk="57f16d64b76fbcb5c98c56e558ccada3" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:07:34 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:07:40 +0900 [warn]: #0 failed to flush the buffer. retry_time=9 next_retry_seconds=2019-01-10 18:12:24 +0900 chunk="57f16d64c4258f1397a1eb06764e3768" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:07:40 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:07:40 +0900 [warn]: #0 failed to flush the buffer. retry_time=11 next_retry_seconds=2019-01-10 18:22:36 +0900 chunk="57f16a4ff62dfee29f25974d3b13b4c4" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:07:40 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `initialize'
+  2019-01-10 18:07:40 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `new'
+  2019-01-10 18:07:40 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:66:in `client'
+  2019-01-10 18:07:40 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:74:in `write'
+  2019-01-10 18:07:40 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:07:40 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:07:40 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:07:40 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:07:49 +0900 [warn]: #0 failed to flush the buffer. retry_time=9 next_retry_seconds=2019-01-10 18:12:18 +0900 chunk="57f16d658a1c2ca8d9d8f0fe366b87b9" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:07:49 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:07:50 +0900 [warn]: #0 failed to flush the buffer. retry_time=9 next_retry_seconds=2019-01-10 18:12:05 +0900 chunk="57f16d64a5d2db3d8bc2f908d5c448cd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:07:50 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:07:55 +0900 [warn]: #0 failed to flush the buffer. retry_time=9 next_retry_seconds=2019-01-10 18:12:23 +0900 chunk="57f16d64a241ef2ef3e553d85683f1fd" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:07:55 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:08:00 +0900 [warn]: #0 failed to flush the buffer. retry_time=9 next_retry_seconds=2019-01-10 18:12:36 +0900 chunk="57f16d656f6bb737594b63248ae0ebbe" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:08:00 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:09:46 +0900 [warn]: #0 failed to flush the buffer. retry_time=9 next_retry_seconds=2019-01-10 18:14:02 +0900 chunk="57f16dcdefade6dfde13d33390741d6d" error_class=PG::ConnectionBad error="FATAL:  sorry, too many clients already\n"
+  2019-01-10 18:09:46 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: Received graceful stop
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3ff2714fe6d0"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3ff270cbbf90"
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3ff92b9148f8"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3ff92b12e170"
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fda4e13a778"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3ff7f010c778"
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3ff7f0138468"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fda4d8d22fc"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fe98351a610"
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fe9830cdfa8"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fe68cd7677c"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fe68d8c6488"
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fe3ef54870c"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fe3ef4dd8bc"
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fd3bc9222d0"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fd3bc92be34"
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3ffbc113a6bc"
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3ffbc0483428"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fe424550828"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fe424cdc2a4"
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fede613b028"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fede58ec64c"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fcb9c9562d8"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fcb9cc5a290"
+2019-01-10 18:10:11 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3ff650512bac"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3ff650cdc518"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fc9864de4e8"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fc9859762b8"
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3ff85c13a4f4"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3ff85c4cc07c"
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fc66252ec6c"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fc66290e454"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fd5e24b4b44"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fd5e24cc4c4"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fdf119125dc"
+2019-01-10 18:10:11 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fdf118afaf4"
+2019-01-10 18:10:11 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:11 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:11 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:11 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:11 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:11 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:11 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:12 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:12 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:12 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:12 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:12 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:12 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:12 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:12 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:12 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:12 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:10:41 +0900 [info]: parsing config file is succeeded path="test.conf"
+2019-01-10 18:10:41 +0900 [warn]: 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:10:41 +0900 [warn]: this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:10:41 +0900 [info]: using configuration file: <ROOT>
+  <source>
+    @type tail
+    format apache
+    path "/tmp/dummy_access_log"
+    tag "dummy.apache.log"
+    <parse>
+      @type apache
+    </parse>
+  </source>
+  <match dummy.apache.log>
+    @type postgres
+    host "localhost"
+    port 5432
+    database "access_logs"
+    username "miyaokakiyoshinari"
+    password "mypass"
+    key_names "method,code,host,path,rhost,agent,referer"
+    sql "INSERT INTO accesslog (method,code,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+    flush_intervals 5s
+  </match>
+</ROOT>
+2019-01-10 18:10:41 +0900 [info]: starting fluentd-1.3.3 pid=73869 ruby="2.5.1"
+2019-01-10 18:10:41 +0900 [info]: spawn command to main:  cmdline=["/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/ruby", "-Eascii-8bit:ascii-8bit", "/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/fluentd", "-c", "test.conf", "-l", "debug.log", "--under-supervisor"]
+2019-01-10 18:10:41 +0900 [info]: gem 'fluent-plugin-postgres' version '0.1.0'
+2019-01-10 18:10:41 +0900 [info]: gem 'fluentd' version '1.3.3'
+2019-01-10 18:10:41 +0900 [info]: adding match pattern="dummy.apache.log" type="postgres"
+2019-01-10 18:10:41 +0900 [info]: adding source type="tail"
+2019-01-10 18:10:41 +0900 [warn]: #0 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:10:41 +0900 [warn]: #0 this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:10:41 +0900 [warn]: parameter 'flush_intervals' in <match dummy.apache.log>
+  @type postgres
+  host "localhost"
+  port 5432
+  database "access_logs"
+  username "miyaokakiyoshinari"
+  password "mypass"
+  key_names "method,code,host,path,rhost,agent,referer"
+  sql "INSERT INTO accesslog (method,code,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+  flush_intervals 5s
+</match> is not used.
+2019-01-10 18:10:41 +0900 [info]: #0 starting fluentd worker pid=73889 ppid=73869 worker=0
+2019-01-10 18:10:41 +0900 [info]: #0 following tail of /tmp/dummy_access_log
+2019-01-10 18:10:41 +0900 [info]: #0 fluentd worker is now running worker=0
+2019-01-10 18:11:51 +0900 [info]: parsing config file is succeeded path="test.conf"
+2019-01-10 18:11:51 +0900 [warn]: 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:11:51 +0900 [warn]: this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:11:51 +0900 [info]: using configuration file: <ROOT>
+  <source>
+    @type tail
+    format apache
+    path "/tmp/dummy_access_log"
+    tag "dummy.apache.log"
+    <parse>
+      @type apache
+    </parse>
+  </source>
+  <match dummy.apache.log>
+    @type postgres
+    host "localhost"
+    port 5432
+    database "access_logs"
+    username "miyaokakiyoshinari"
+    password "mypass"
+    key_names "method,code,host,path,rhost,agent,referer"
+    sql "INSERT INTO accesslog (method,code,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+    flush_intervals 5s
+  </match>
+</ROOT>
+2019-01-10 18:11:51 +0900 [info]: starting fluentd-1.3.3 pid=73976 ruby="2.5.1"
+2019-01-10 18:11:51 +0900 [info]: spawn command to main:  cmdline=["/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/ruby", "-Eascii-8bit:ascii-8bit", "/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/fluentd", "-c", "test.conf", "-l", "debug.log", "--under-supervisor"]
+2019-01-10 18:11:52 +0900 [info]: gem 'fluent-plugin-postgres' version '0.1.0'
+2019-01-10 18:11:52 +0900 [info]: gem 'fluentd' version '1.3.3'
+2019-01-10 18:11:52 +0900 [info]: adding match pattern="dummy.apache.log" type="postgres"
+2019-01-10 18:11:52 +0900 [info]: adding source type="tail"
+2019-01-10 18:11:52 +0900 [warn]: #0 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:11:52 +0900 [warn]: #0 this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:11:52 +0900 [warn]: parameter 'flush_intervals' in <match dummy.apache.log>
+  @type postgres
+  host "localhost"
+  port 5432
+  database "access_logs"
+  username "miyaokakiyoshinari"
+  password "mypass"
+  key_names "method,code,host,path,rhost,agent,referer"
+  sql "INSERT INTO accesslog (method,code,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+  flush_intervals 5s
+</match> is not used.
+2019-01-10 18:11:52 +0900 [info]: #0 starting fluentd worker pid=73997 ppid=73976 worker=0
+2019-01-10 18:11:52 +0900 [info]: #0 following tail of /tmp/dummy_access_log
+2019-01-10 18:11:52 +0900 [info]: #0 fluentd worker is now running worker=0
+2019-01-10 18:13:37 +0900 [warn]: #0 failed to flush the buffer. retry_time=0 next_retry_seconds=2019-01-10 18:13:38 +0900 chunk="57f16fac81c0b62fda8ce23659646cce" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:13:37 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:75:in `async_prepare'
+  2019-01-10 18:13:37 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:75:in `write'
+  2019-01-10 18:13:37 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:13:37 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:13:37 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:13:37 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:13:38 +0900 [warn]: #0 failed to flush the buffer. retry_time=1 next_retry_seconds=2019-01-10 18:13:39 +0900 chunk="57f16fac81c0b62fda8ce23659646cce" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:13:38 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:13:39 +0900 [warn]: #0 failed to flush the buffer. retry_time=2 next_retry_seconds=2019-01-10 18:13:41 +0900 chunk="57f16fac81c0b62fda8ce23659646cce" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:13:39 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:13:41 +0900 [warn]: #0 failed to flush the buffer. retry_time=3 next_retry_seconds=2019-01-10 18:13:45 +0900 chunk="57f16fac81c0b62fda8ce23659646cce" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:13:41 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:13:41 +0900 [warn]: #0 failed to flush the buffer. retry_time=0 next_retry_seconds=2019-01-10 18:13:42 +0900 chunk="57f16fad1108a6a3587b38690847f93d" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:13:41 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:75:in `async_prepare'
+  2019-01-10 18:13:41 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:75:in `write'
+  2019-01-10 18:13:41 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:13:41 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:13:41 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:13:41 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:13:42 +0900 [warn]: #0 failed to flush the buffer. retry_time=1 next_retry_seconds=2019-01-10 18:13:43 +0900 chunk="57f16fad1108a6a3587b38690847f93d" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:13:42 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:13:43 +0900 [warn]: #0 failed to flush the buffer. retry_time=2 next_retry_seconds=2019-01-10 18:13:46 +0900 chunk="57f16fad1108a6a3587b38690847f93d" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:13:43 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:13:45 +0900 [warn]: #0 failed to flush the buffer. retry_time=4 next_retry_seconds=2019-01-10 18:13:54 +0900 chunk="57f16fac81c0b62fda8ce23659646cce" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:13:45 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:13:46 +0900 [warn]: #0 failed to flush the buffer. retry_time=3 next_retry_seconds=2019-01-10 18:13:50 +0900 chunk="57f16fad1108a6a3587b38690847f93d" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:13:46 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:13:50 +0900 [warn]: #0 failed to flush the buffer. retry_time=4 next_retry_seconds=2019-01-10 18:13:58 +0900 chunk="57f16fad1108a6a3587b38690847f93d" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:13:50 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:13:51 +0900 [info]: parsing config file is succeeded path="test.conf"
+2019-01-10 18:13:52 +0900 [warn]: 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:13:52 +0900 [warn]: this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:13:52 +0900 [info]: using configuration file: <ROOT>
+  <source>
+    @type tail
+    format apache
+    path "/tmp/dummy_access_log"
+    tag "dummy.apache.log"
+    <parse>
+      @type apache
+    </parse>
+  </source>
+  <match dummy.apache.log>
+    @type postgres
+    host "localhost"
+    port 5432
+    database "access_logs"
+    username "miyaokakiyoshinari"
+    password "mypass"
+    key_names "method,code,host,path,rhost,agent,referer"
+    sql "INSERT INTO accesslog (method,code,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+    flush_intervals 5s
+  </match>
+</ROOT>
+2019-01-10 18:13:52 +0900 [info]: starting fluentd-1.3.3 pid=74077 ruby="2.5.1"
+2019-01-10 18:13:52 +0900 [info]: spawn command to main:  cmdline=["/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/ruby", "-Eascii-8bit:ascii-8bit", "/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/fluentd", "-c", "test.conf", "-l", "debug.log", "--under-supervisor"]
+2019-01-10 18:13:52 +0900 [info]: gem 'fluent-plugin-postgres' version '0.1.0'
+2019-01-10 18:13:52 +0900 [info]: gem 'fluentd' version '1.3.3'
+2019-01-10 18:13:52 +0900 [info]: adding match pattern="dummy.apache.log" type="postgres"
+2019-01-10 18:13:52 +0900 [info]: adding source type="tail"
+2019-01-10 18:13:52 +0900 [warn]: #0 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:13:52 +0900 [warn]: #0 this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:13:52 +0900 [warn]: parameter 'flush_intervals' in <match dummy.apache.log>
+  @type postgres
+  host "localhost"
+  port 5432
+  database "access_logs"
+  username "miyaokakiyoshinari"
+  password "mypass"
+  key_names "method,code,host,path,rhost,agent,referer"
+  sql "INSERT INTO accesslog (method,code,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+  flush_intervals 5s
+</match> is not used.
+2019-01-10 18:13:52 +0900 [info]: #0 starting fluentd worker pid=74098 ppid=74077 worker=0
+2019-01-10 18:13:52 +0900 [info]: #0 following tail of /tmp/dummy_access_log
+2019-01-10 18:13:52 +0900 [info]: #0 fluentd worker is now running worker=0
+2019-01-10 18:13:54 +0900 [warn]: #0 failed to flush the buffer. retry_time=5 next_retry_seconds=2019-01-10 18:14:11 +0900 chunk="57f16fac81c0b62fda8ce23659646cce" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:13:54 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:13:58 +0900 [warn]: #0 failed to flush the buffer. retry_time=5 next_retry_seconds=2019-01-10 18:14:15 +0900 chunk="57f16fad1108a6a3587b38690847f93d" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:13:58 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:14:11 +0900 [warn]: #0 failed to flush the buffer. retry_time=6 next_retry_seconds=2019-01-10 18:14:44 +0900 chunk="57f16fac81c0b62fda8ce23659646cce" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:14:11 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:14:15 +0900 [warn]: #0 failed to flush the buffer. retry_time=6 next_retry_seconds=2019-01-10 18:14:43 +0900 chunk="57f16fad1108a6a3587b38690847f93d" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:14:15 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:14:38 +0900 [info]: parsing config file is succeeded path="test.conf"
+2019-01-10 18:14:38 +0900 [warn]: 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:14:38 +0900 [warn]: this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:14:38 +0900 [info]: using configuration file: <ROOT>
+  <source>
+    @type tail
+    format apache
+    path "/tmp/dummy_access_log"
+    tag "dummy.apache.log"
+    <parse>
+      @type apache
+    </parse>
+  </source>
+  <match dummy.apache.log>
+    @type postgres
+    host "localhost"
+    port 5432
+    database "access_logs"
+    username "miyaokakiyoshinari"
+    password "mypass"
+    key_names "status,code,host,path,rhost,agent,referer"
+    sql "INSERT INTO accesslog (status,code,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+    flush_intervals 5s
+  </match>
+</ROOT>
+2019-01-10 18:14:38 +0900 [info]: starting fluentd-1.3.3 pid=74117 ruby="2.5.1"
+2019-01-10 18:14:38 +0900 [info]: spawn command to main:  cmdline=["/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/ruby", "-Eascii-8bit:ascii-8bit", "/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/fluentd", "-c", "test.conf", "-l", "debug.log", "--under-supervisor"]
+2019-01-10 18:14:39 +0900 [info]: gem 'fluent-plugin-postgres' version '0.1.0'
+2019-01-10 18:14:39 +0900 [info]: gem 'fluentd' version '1.3.3'
+2019-01-10 18:14:39 +0900 [info]: adding match pattern="dummy.apache.log" type="postgres"
+2019-01-10 18:14:39 +0900 [info]: adding source type="tail"
+2019-01-10 18:14:39 +0900 [warn]: #0 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:14:39 +0900 [warn]: #0 this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:14:39 +0900 [warn]: parameter 'flush_intervals' in <match dummy.apache.log>
+  @type postgres
+  host "localhost"
+  port 5432
+  database "access_logs"
+  username "miyaokakiyoshinari"
+  password "mypass"
+  key_names "status,code,host,path,rhost,agent,referer"
+  sql "INSERT INTO accesslog (status,code,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+  flush_intervals 5s
+</match> is not used.
+2019-01-10 18:14:39 +0900 [info]: #0 starting fluentd worker pid=74137 ppid=74117 worker=0
+2019-01-10 18:14:39 +0900 [info]: #0 following tail of /tmp/dummy_access_log
+2019-01-10 18:14:39 +0900 [info]: #0 fluentd worker is now running worker=0
+2019-01-10 18:14:43 +0900 [warn]: #0 failed to flush the buffer. retry_time=7 next_retry_seconds=2019-01-10 18:15:49 +0900 chunk="57f16fad1108a6a3587b38690847f93d" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:14:43 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:14:44 +0900 [warn]: #0 failed to flush the buffer. retry_time=7 next_retry_seconds=2019-01-10 18:15:47 +0900 chunk="57f16fac81c0b62fda8ce23659646cce" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:14:44 +0900 [warn]: #0 suppressed same stacktrace
+2019-01-10 18:15:37 +0900 [info]: Received graceful stop
+2019-01-10 18:15:37 +0900 [info]: Received graceful stop
+2019-01-10 18:15:37 +0900 [info]: Received graceful stop
+2019-01-10 18:15:37 +0900 [info]: Received graceful stop
+2019-01-10 18:15:37 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:15:37 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:15:37 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fcbd95ed0c8"
+2019-01-10 18:15:37 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fcbd9d3e610"
+2019-01-10 18:15:37 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:15:37 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:15:37 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fc6e850960c"
+2019-01-10 18:15:37 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:15:37 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:15:37 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fef4a8df0d0"
+2019-01-10 18:15:37 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fef4a4e0678"
+2019-01-10 18:15:37 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:15:37 +0900 [info]: #0 fluentd worker is now stopping worker=0
+2019-01-10 18:15:37 +0900 [info]: #0 shutting down fluentd worker worker=0
+2019-01-10 18:15:37 +0900 [info]: #0 shutting down input plugin type=:tail plugin_id="object:3fc38190a3c4"
+2019-01-10 18:15:37 +0900 [warn]: #0 failed to flush the buffer. retry_time=0 next_retry_seconds=2019-01-10 18:15:38 +0900 chunk="57f1702c4e99e95e4a77f8243c776798" error_class=PG::UndefinedColumn error="ERROR:  column \"method\" of relation \"accesslog\" does not exist\nLINE 1: INSERT INTO accesslog (method,code,host,path,rhost,agent,ref...\n                               ^\n"
+  2019-01-10 18:15:37 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:75:in `async_prepare'
+  2019-01-10 18:15:37 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluent-plugin-postgres-0.1.0/lib/fluent/plugin/out_postgres.rb:75:in `write'
+  2019-01-10 18:15:37 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1123:in `try_flush'
+  2019-01-10 18:15:37 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:1423:in `flush_thread_run'
+  2019-01-10 18:15:37 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin/output.rb:452:in `block (2 levels) in start'
+  2019-01-10 18:15:37 +0900 [warn]: #0 /Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/lib/ruby/gems/2.5.0/gems/fluentd-1.3.3/lib/fluent/plugin_helper/thread.rb:78:in `block in thread_create'
+2019-01-10 18:15:37 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:15:38 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fc6e852c6c0"
+2019-01-10 18:15:38 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:15:38 +0900 [info]: #0 shutting down output plugin type=:postgres plugin_id="object:3fc381941db0"
+2019-01-10 18:15:38 +0900 [info]: Worker 0 finished with status 0
+2019-01-10 18:16:07 +0900 [info]: parsing config file is succeeded path="test.conf"
+2019-01-10 18:16:07 +0900 [warn]: 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:16:07 +0900 [warn]: this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:16:07 +0900 [info]: using configuration file: <ROOT>
+  <source>
+    @type tail
+    format apache
+    path "/tmp/dummy_access_log"
+    tag "dummy.apache.log"
+    <parse>
+      @type apache
+    </parse>
+  </source>
+  <match dummy.apache.log>
+    @type postgres
+    host "localhost"
+    port 5432
+    database "access_logs"
+    username "miyaokakiyoshinari"
+    password "mypass"
+    key_names "status,code,host,path,rhost,agent,referer"
+    sql "INSERT INTO accesslog (status,code,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+    flush_intervals 5s
+  </match>
+</ROOT>
+2019-01-10 18:16:07 +0900 [info]: starting fluentd-1.3.3 pid=74258 ruby="2.5.1"
+2019-01-10 18:16:07 +0900 [info]: spawn command to main:  cmdline=["/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/ruby", "-Eascii-8bit:ascii-8bit", "/Users/miyaokakiyoshinari/.rbenv/versions/2.5.1/bin/fluentd", "-c", "test.conf", "-l", "debug.log", "--under-supervisor"]
+2019-01-10 18:16:07 +0900 [info]: gem 'fluent-plugin-postgres' version '0.1.0'
+2019-01-10 18:16:07 +0900 [info]: gem 'fluentd' version '1.3.3'
+2019-01-10 18:16:07 +0900 [info]: adding match pattern="dummy.apache.log" type="postgres"
+2019-01-10 18:16:07 +0900 [info]: adding source type="tail"
+2019-01-10 18:16:08 +0900 [warn]: #0 'pos_file PATH' parameter is not set to a 'tail' source.
+2019-01-10 18:16:08 +0900 [warn]: #0 this parameter is highly recommended to save the position to resume tailing.
+2019-01-10 18:16:08 +0900 [warn]: parameter 'flush_intervals' in <match dummy.apache.log>
+  @type postgres
+  host "localhost"
+  port 5432
+  database "access_logs"
+  username "miyaokakiyoshinari"
+  password "mypass"
+  key_names "status,code,host,path,rhost,agent,referer"
+  sql "INSERT INTO accesslog (status,code,host,path,rhost,agent,referer) VALUES ($1,$2,$3,$4,$5,$6,$7)"
+  flush_intervals 5s
+</match> is not used.
+2019-01-10 18:16:08 +0900 [info]: #0 starting fluentd worker pid=74279 ppid=74258 worker=0
+2019-01-10 18:16:08 +0900 [info]: #0 following tail of /tmp/dummy_access_log
+2019-01-10 18:16:08 +0900 [info]: #0 fluentd worker is now running worker=0
